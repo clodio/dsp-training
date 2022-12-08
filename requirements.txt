@@ -9,3 +9,4 @@ requests
 # python -m ipykernel install --user --name dsp-training --display-name "Python (dsp-training)"
 ipykernel
 seaborn
+mlflow

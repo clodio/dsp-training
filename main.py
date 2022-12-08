@@ -1,6 +1,9 @@
 import os
 from datetime import datetime
 import logging
+import mlflow
+from mlflow import log_metric, log_param, log_artifacts
+from pathlib import Path
 
 from src.utils import download_file_from_url
 from src.preprocess.preprocess import preprocess, load_and_split_data
@@ -17,14 +20,19 @@ def main():
 
     :return:
     """
-    download_file_from_url(files.LOANS_DATA_URL, files.LOANS)
+    # ne marche pas avec mon proxy --> desctivé copié en local
+    # download_file_from_url(files.LOANS_DATA_URL, files.LOANS)
 
     today_str = str(datetime.date(datetime.now()))
-    # TODO 1 : Créez un experiment MlFlow avec la fonction set_experiment et un nom que vous trouverez dans
+
+    mlflow.set_experiment(files.MLFLOW_EXPERIMENT_NAME)
+
+    # TODO 1 : Créez un experiment MlFlow avec la fonction set_experiment et un nom MLFLOW_EXPERIMENT_NAME que vous trouverez dans
     #  src/constants/files.py puis lancez un run MlFlow dont le nom est la date du jour en remplaçant
     #  NotImplementedError par la méthode MlFlow appropriée.
     #  N’oubliez pas d’importer le package et de l’ajouter dans les requirements.
-    with NotImplementedError():
+
+    with mlflow.start_run(run_name=today_str):
         logging.info("*********** 1/5 Loading and splitting data ***********")
         load_and_split_data(raw_data_path=files.LOANS,
                             training_file_path=files.TRAIN,

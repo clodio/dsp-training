@@ -46,6 +46,15 @@ Ou si vous utilisez anaconda:
     pip install -r requirements.txt
     python -m ipykernel install --user --name=dsp-training
 
+
+    c:/bda/tools/minicondaInternet/condabin/conda.bat create -n dsp-training python=3.7
+    c:/bda/tools/minicondaInternet/condabin/conda.bat activate dsp-training
+    c:/bda/tools/minicondaInternet/condabin/conda.bat install ipykernel jupyter
+    pip install -r requirements.txt
+    python -m ipykernel install --user --name=dsp-training
+
+
+
 Tester l'installation
 
     python -m pytest tests

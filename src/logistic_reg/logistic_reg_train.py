@@ -26,3 +26,5 @@ def logistic_reg_train(preprocessed_train_path, logistic_reg_model_name):
 
     logging.info("Saving model")
     # TODO 3 : Sauvegarder le modèle.
+    mlflow.sklearn.log_model(logistic_reg, logistic_reg_model_name)
+

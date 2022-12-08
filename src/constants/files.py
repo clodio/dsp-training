@@ -16,7 +16,8 @@ INTERIM_DATA = create_folder(os.path.join(DATA_PATH, "interim"))
 OUTPUT_DATA = create_folder(os.path.join(DATA_PATH, "output"))
 MODELS = create_folder(os.path.join(DATA_PATH, "models"))
 
-LOANS_DATA_URL = "https://ps-dsp-training.s3.eu-west-1.amazonaws.com/loans.csv"
+# LOANS_DATA_URL = "https://ps-dsp-training.s3.eu-west-1.amazonaws.com/loans.csv"
+LOANS_DATA_URL = "./data/input/loans.csv"
 
 LOANS = os.path.join(RAW_DATA, "loans.csv")
 
