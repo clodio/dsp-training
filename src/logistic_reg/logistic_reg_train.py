@@ -2,7 +2,7 @@ import pandas as pd
 from sklearn.linear_model import LogisticRegression
 import mlflow
 import logging
-
+# import pickle
 import src.constants.columns as c
 
 
@@ -27,4 +27,6 @@ def logistic_reg_train(preprocessed_train_path, logistic_reg_model_name):
     logging.info("Saving model")
     # TODO 3 : Sauvegarder le modèle.
     mlflow.sklearn.log_model(logistic_reg, logistic_reg_model_name)
+    # pickle.dump(logistic_reg, '../../../model.pickle')
+    # newlogistic_reg = pickle.load( '../../../model.pickle')
 
