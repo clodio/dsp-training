@@ -13,9 +13,13 @@ WORKDIR /dsp-training
 COPY . .
 
 # installation des dépendances du projet
-# TODO
+
+# j'ai du remplacer sklearn par scikit-learn dans les requirements pour qu eca fonctionne sur mon poste
+# je n'ai pas de poste avec docker je n'ai pas pu tester
+RUN pip3 install -r requirements
 
 RUN python -m pytest tests
 
 # notre script qui va être exécuté quand l'image sera lancée via "docker run"
 # TODO
+CMD ["python3", "main.py"]

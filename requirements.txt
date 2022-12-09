@@ -6,7 +6,7 @@ pandas
 pytest
 pytest-env
 tqdm
-sklearn
+scikit-learn
 requests
 # python -m ipykernel install --user --name dsp-training --display-name "Python (dsp-training)"
 ipykernel
