@@ -3,6 +3,8 @@ import pandas as pd
 import mlflow
 from unittest import TestCase
 import shutil
+import src.predict.predict as predict
+import src.constants.files
 
 from src.constants import files
 from src.preprocess.preprocess import preprocess
@@ -33,8 +35,10 @@ class PreprocessTest(TestCase):
             #  du dossier preprocess_test, et la variable training_file_path avec le chemin vers le fichier
             #  loans_test.csv du même dossier. N’utilisez pas de chemin relatif et pensez à utiliser os.path.join pour
             #  une gestion cross-os des fichiers.
-            preprocessed_train_path = NotImplementedError()
-            training_file_path = NotImplementedError()
+            preprocessed_train_path = os.path.join(LOCAL_ROOT, "result_test.csv")
+            print("preprocessed_train_path" + preprocessed_train_path)
+            training_file_path = os.path.join(LOCAL_ROOT, "loans_test.csv")
+            print("training_file_path" + training_file_path)
 
             # When
             preprocess(
@@ -45,7 +49,7 @@ class PreprocessTest(TestCase):
 
             # Then
             # TODO 2 : charger le fichier expected.csv des résultats attendus.
-            expected = NotImplementedError()
+            expected =  pd.read_csv(os.path.join(LOCAL_ROOT, "expected.csv"))
             # Read result from csv to avoid problems with nan
             result = pd.read_csv(preprocessed_train_path)
 
@@ -54,7 +58,11 @@ class PreprocessTest(TestCase):
             try:
                 # TODO 3 : charger le preprocessing pipeline depuis mlflow.
                 #  indice : inspirez-vous du code de predict.py
-                active_run = mlflow.active_run()
-                NotImplementedError()
+                active_run_id = mlflow.active_run()
+
+
+                mlflow.sklearn.load_model(os.path.join(active_run_id.info.artifact_uri, files.PREPROCESSING_PIPELINE)), active_run_id
+                
+
             except IOError:
                 raise AssertionError("The preprocessing pipeline has not been saved with mlflow")

@@ -43,6 +43,7 @@ def predict(test_file_path, preprocessing_pipeline_name, logistic_reg_model_name
 
     logging.info("Saving prediction results")
     test_df.to_csv(prediction_file_path, index=False)
+    print("fffffffffffffffffffffffffffffff" + prediction_file_path)
 
 
 def load_latest_preprocessing_pipeline(preprocessing_pipeline_name, experiment_name):
